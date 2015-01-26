@@ -7,7 +7,8 @@ import (
 
 type User struct {
 	Document
-	Name string
+	Name    string
+	Surname string
 }
 
 func define_collection() *Collection {
@@ -16,7 +17,8 @@ func define_collection() *Collection {
 		Name: "Users",
 		Path: "/tartara/db1/users/",
 		Document: &User{
-			Name: "Fulanito",
+			Name:    "Fulanito",
+			Surname: "Fulanitez",
 		},
 	}
 }
@@ -31,17 +33,14 @@ func TestDefineCollectionUsers(t *testing.T) {
 func TestInsert(t *testing.T) {
 
 	Users := define_collection()
-	fmt.Println(Users)
 
-	// a := Users.Insert()
-	// fmt.Println(a)
+	fulanito := &User{
+		Name:    "Fulanito",
+		Surname: "Fulanitez",
+	}
 
-	// b := Users.Insert()
-	// fmt.Println(b)
-
-	// b.(User).Name = "MenGANO"
-
-	// fmt.Println(a)
-	// fmt.Println(b)
+	fmt.Println(fulanito)
+	Users.Insert(fulanito)
+	fmt.Println(fulanito)
 
 }

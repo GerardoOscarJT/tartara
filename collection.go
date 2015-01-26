@@ -1,6 +1,9 @@
 package tartara
 
-import "reflect"
+import (
+	"encoding/json"
+	"io/ioutil"
+)
 
 // type CollectionInterface interface {
 // 	GetNew() CollectionInterface
@@ -12,15 +15,21 @@ type Collection struct {
 	Document DocumentInterface
 }
 
-func (this *Collection) Insert() DocumentInterface {
+func (this *Collection) Insert(document DocumentInterface) bool {
 
-	// TODO: clone this.Document before
+	if document.GenerateId() {
+		err := ioutil.WriteFile(this.Path+"/"+document.GetId(), doc2json(document), 0644)
+		_ = err
+		return true
+	}
 
-	// document_type := reflect.TypeOf(this.Document)
+	return false
+}
 
-	// result := reflect.New(document_type)
-
-	// fmt.Println(result)
-
-	return reflect.ValueOf(this.Document).Interface().(DocumentInterface)
+func doc2json(document interface{}) []byte {
+	j, err := json.Marshal(document)
+	if err != nil {
+		return []byte{}
+	}
+	return j
 }
