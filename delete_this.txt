@@ -1,0 +1,61 @@
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"io/ioutil"
+// )
+
+// var database = "/tartara/db1/"
+// var collection = "users"
+
+// type Document struct {
+// 	Id      string
+// 	Name    string
+// 	Surname string
+// 	Default string
+// }
+
+// func NewDocument() *Document {
+// 	return nil
+// }
+
+// func (this Document) Insert() {
+// 	err := ioutil.WriteFile(database+collection+"/"+this.Id, doc2json(this), 0644)
+// 	_ = err
+// }
+
+// func Item(Id string) *Document {
+// 	data, err := ioutil.ReadFile(database + collection + "/" + Id)
+// 	_ = err
+// 	_ = data
+
+// 	if nil != err {
+// 		fmt.Println(err)
+// 	}
+
+// 	return nil
+// }
+
+// func doc2json(document interface{}) []byte {
+// 	j, err := json.Marshal(document)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 		return []byte{}
+// 	}
+// 	return j
+// }
+
+// func main() {
+
+// 	doc := Document{
+// 		Id:      "0000001",
+// 		Name:    "Gerardo",
+// 		Surname: "Jiménez Tornos",
+// 	}
+
+// 	doc.Insert()
+
+// 	gerardo := Item("0000002")
+
+// 	fmt.Println("Gerardo: ", gerardo)
+
+// }
