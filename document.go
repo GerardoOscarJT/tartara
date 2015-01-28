@@ -1,15 +1,9 @@
 package tartara
 
-import (
-	"crypto/md5"
-	"encoding/hex"
-	"fmt"
-	"strconv"
-	"time"
-)
+import "github.com/GerardoOscarJT/tartara/utils"
 
 type DocumentInterface interface {
-	SayHello()
+	SayHello() string
 	Set(key string, value string)
 	Get(key string) string
 	Inc(key string, value int)
@@ -21,8 +15,8 @@ type Document struct {
 	Id string
 }
 
-func (this *Document) SayHello() {
-	fmt.Println("Hello (I am Document)")
+func (this *Document) SayHello() string {
+	return "Hello (I am Document)"
 }
 
 func (this *Document) Set(key string, value string) {
@@ -41,18 +35,9 @@ func (this *Document) Inc(key string, value int) {
 
 }
 
-func generateUniqueId() string {
-
-	nanoseconds := time.Now().UnixNano()
-	array := []byte(strconv.FormatInt(nanoseconds, 10))
-	hasher := md5.New()
-	hasher.Write(array)
-	return hex.EncodeToString(hasher.Sum(nil))
-}
-
 func (this *Document) GenerateId() bool {
 	if "" == this.Id {
-		this.Id = generateUniqueId()
+		this.Id = utils.GenerateUniqueId()
 		return true
 	}
 	return false
