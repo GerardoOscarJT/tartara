@@ -7,7 +7,7 @@ WARNING: Ultra beta prototype
 
 ## Getting started
 
-'''
+```go
 // Define a document
 type Fruit struct {
 	Document
@@ -33,4 +33,4 @@ Fruits.Insert(apple)
 // Retrieve a document
 fruit := Fruits.FindById("8264535c0c4e9c6c335635c4026a8022").(*Fruit)
 
-'''
+```
