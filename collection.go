@@ -18,7 +18,6 @@ type CollectionInterface interface {
 }
 
 type Collection struct {
-	Name     string
 	Path     string
 	Document DocumentInterface
 	Index    map[string]DocumentInterface
